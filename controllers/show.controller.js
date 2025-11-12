@@ -17,6 +17,7 @@ const handleError = (res, error) => {
     }
 
     errorResponseBody.err = error;
+    console.log("Shw controller Eroor", error)
     return res.status(STATUS.INTERNAL_SERVER_ERROR).json(errorResponseBody);
 };
 
@@ -29,7 +30,7 @@ const create = async (req, res) => {
 
         successResponseBody.message = "Successfully created the show";
         successResponseBody.data = response;
-
+        console.log("New Show Created");
         return res.status(STATUS.CREATED).json(successResponseBody);
     } catch (error) {
         return handleError(res, error);
@@ -45,7 +46,7 @@ const getShows = async (req, res) => {
 
         successResponseBody.message = "Successfully fetched the movie shows";
         successResponseBody.data = response;
-
+        console.log("Getting all th shows");
         return res.status(STATUS.OK).json(successResponseBody);
     } catch (error) {
         return handleError(res, error);
@@ -61,7 +62,7 @@ const destroy = async (req, res) => {
 
         successResponseBody.message = "Successfully deleted the show";
         successResponseBody.data = response;
-
+        console.log("Deleting a show by Id");
         return res.status(STATUS.OK).json(successResponseBody);
     } catch (error) {
         return handleError(res, error);
@@ -77,7 +78,7 @@ const update = async (req, res) => {
 
         successResponseBody.message = "Successfully updated the show";
         successResponseBody.data = response;
-
+        console.log("Updating a show by Id");
         return res.status(STATUS.OK).json(successResponseBody);
     } catch (error) {
         console.error("Update Show Error:", error);
